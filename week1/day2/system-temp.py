@@ -26,10 +26,10 @@ message = {
 
 messages = [message_system,message]
 
-response = client.chat.completions.create(model = model , messages = messages , temperature=2)
+response = client.chat.completions.create(model = model , messages = messages , temperature=2  )
 print(response)
 
 print("############################")
 
 answer = response.choices[0].message.content
-print(answer)
+print(answer) 
