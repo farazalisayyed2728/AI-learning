@@ -21,23 +21,19 @@ class Ticket(BaseModel):
 schema = Ticket.model_json_schema()
 
 response_format = {
-    "type": "JSON_schema",
-
+    "type": "json_object"
 }
-
 
 system_prompt = f"""
     Extract the personal information from the ticket strickly based on the schema and give me a JSON output
     {schema}"""
 
-text = "hello i am a product buyer and its cant work properly please resolve the issue as soon as possible"
+text = "issue : samsung not working , email :usersam1@gmail.com, name : samuel"
 
 prompt=f""" 
 this is a customer complaint message from a product buyer.
 {text}
 """
-
-
 
 message_system={
     "role" : "system" ,
@@ -50,11 +46,15 @@ message = {
 } 
 
 messages = [message_system,message]
-
 response = client.chat.completions.create(model = model , messages = messages , response_format=response_format)
-print(response)
-
-print("############################")
 
 answer = response.choices[0].message.content
-print(answer) 
+
+import json
+row_json = answer
+data_file = json.loads(row_json)
+ticket = Ticket(**data_file)
+
+print(f"name : {ticket.name}")
+print(f"email : {ticket.email}")
+print(f"issue : {ticket.issue}")
