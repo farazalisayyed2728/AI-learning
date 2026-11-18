@@ -3,6 +3,8 @@ from pathlib import Path
 from dotenv import load_dotenv
 from groq import Groq
 from pydantic import BaseModel
+from pydantic import Field
+from docx import Document
 
 load_dotenv(Path(__file__).resolve().parents[2] / ".env")
 my_api_key = os.getenv("GROQ_API_KEY")
@@ -57,11 +59,12 @@ Interview Rounds
 5. HR Interview """
 
 class JobD(BaseModel):
+    
     role : str
     required_skills :list[str]
     preferred_skills :list[str]
     minimum_experiance : float | None
-    educational_requirements = list[str]
+    educational_requirements : list[str]
 
 jobd_schema = JobD.model_json_schema()
 
@@ -82,8 +85,8 @@ system_prompt = f"""
     Do not invent informaton .
 """
 user_prompt = f"""
-analyze the following job description:
-{job_description}
+    analyze the following job description:
+    {job_description}
 """
 
 message_system={
@@ -92,7 +95,7 @@ message_system={
 } 
 message_user={
     "role" : "user" ,
-    "type" : "json_object"
+    "content" : user_prompt
 } 
 
 response_format = {
@@ -100,6 +103,7 @@ response_format = {
 }
 
 messages = [message_system,message_user]
+print(messages)
 response = client.chat.completions.create(model = model , messages = messages , response_format=response_format)
 
 answer = response.choices[0].message.content
@@ -136,8 +140,8 @@ class Resume(BaseModel):
 
     total_experiance_years :float |None = None
     skills : list[str]
-    experiences : list[experience] = []
-    education : list[str] = []
+    experiences: list[experience] = Field(default_factory=list)
+    education: list[str] = Field(default_factory=list)
     project : list[str] = []
     certification : list[str] = []
 
@@ -149,21 +153,22 @@ from docx import Document
 def read_pdf(file_path):
     reader = PdfReader(file_path)
     text = ""
+
     for page in reader.pages:
         page_text = page.extract_text()
         if page_text:
             text += page_text + "\n"
-        return text
+    return text
 
 def read_docx(file_path):
     document = Document(file_path)
     text = ""
-    for paragrapgh in document.paragrapghs:
+    for paragrapgh in document.paragraphs:
         
         if paragrapgh.text.strip():
             text += paragrapgh.text + "\n"
 
-    for table in document.table:
+    for table in document.tables:
         for row in table.rows:
             for cell in row.cells:  # colunm ko cell kahete hai 
                 if cell.text.strip():
@@ -203,70 +208,64 @@ def final_score(job, resume):
     keep the response concise and easy to read
  
     """
-message={
-    "role" : "user" ,
-    "content" : prompt
-}
+    message={
+        "role" : "user" ,
+        "content" : prompt
+    }
 
-messages = [message]
-response_format = {
-    "type": "json_object"
-}
-response = client.chat.completions.create(model = model , messages = messages , response_format=response_format)
+    messages = [message]
+    response_format = {
+        "type":"json_object"
+    }
+    response = client.chat.completions.create(model = model , messages = messages , response_format=response_format)
+    data = json.loads(response.choices[0].message.content)
+    return MatchResult(**data)
 
 
 
 def parse_resume(resume_text):
+
     system_prompt = f"""
     You are an expert AI resume parser.
 
-    Analyze the provided resume and extract:
-    - Candidate name and contact details.
-    - Professional summary.
-    - Technical and soft skills.
-    - Educational qualifications.
-    - Work experience and internships.
-    - Projects and technologies used.
-    - Certifications and achievements.
+    Extract candidate information from the resume.
 
-    Rules:
-    - Extract only information available in the resume.
-    - Never invent or assume missing information.
-    - Return null for missing values.
-    - Return the result in valid JSON format only.
-
-    Resume:
+    Return only valid JSON matching this schema:
     {resume_schema}
+
+    Never invent information.
+    Return null for missing values.
     """
+
     user_prompt = f"""
-    parse the following resume:
+    Parse the following resume:
     {resume_text}
-"""
-    
-message_system={
-    "role" : "system" ,
-    "content" : system_prompt
-} 
-message_user={
-    "role" : "user" ,
-    "type" : "json_object"
-} 
+    """
 
-response_format = {
-    "type" : "json_object"
-}
+    messages = [
+        {
+            "role": "system",
+            "content": system_prompt
+        },
+        {
+            "role": "user",
+            "content": user_prompt
+        }
+    ]
 
-messages = [message_system,message_user]
-response = client.chat.completions.create(model = model , messages = messages , response_format=response_format)
+    response = client.chat.completions.create(
+        model=model,
+        messages=messages,
+        response_format={"type": "json_object"}
+    )
 
-answer = response.choices[0].message.content
+    answer = response.choices[0].message.content
 
-role="user"
-
-
+    return Resume(**json.loads(answer))
 
 import time
-resume_folder = Path("resume")
+
+resume_folder = Path("resumes")
 all_results = []
 for file_path in resume_folder.iterdir():
     if file_path.suffix.lower() not in [".pdf" , ".docx"]:
@@ -279,8 +278,37 @@ for file_path in resume_folder.iterdir():
     result = final_score(job , parsed_resume)
     time.sleep(5)
     print("Score:" , result.score)
+    
     all_results.append({
         "name" : parsed_resume.name,
-        "reult" : result.score,
+        "score" : result.score,
         "details" : result.details,
     })
+
+all_results.sort(
+    key=lambda candidate : candidate["score"],
+    reverse = True
+)
+
+top_2 = all_results[:2]
+worst_2 = all_results[-2:]
+
+print("Top 2 candidates")
+for candidate in top_2:
+    print(
+        candidate["name"],
+        "-",
+        candidate["score"],
+        "%"
+    )
+    print(candidate["details"])
+
+print("LOWEST 2 CANDIDATES")
+for candidate in worst_2:
+    print(
+        candidate["name"],
+        "-",
+        candidate["score"],
+        "%"
+    )
+    print(candidate["details"])
