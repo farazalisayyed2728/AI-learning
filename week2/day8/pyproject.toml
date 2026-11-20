@@ -1,0 +1,22 @@
+[project]
+name = "day8"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Sayyed Faraz Ali", email = "farazalisayyed2728@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "docx>=0.2.4",
+    "dotenv>=0.9.9",
+    "groq>=1.7.0",
+    "pydantic>=2.14.3",
+]
+
+[project.scripts]
+day8 = "day8:main"
+
+[build-system]
+requires = ["uv_build>=0.13.8,<0.14.0"]
+build-backend = "uv_build"
