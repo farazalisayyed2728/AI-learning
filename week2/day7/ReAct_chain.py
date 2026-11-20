@@ -122,6 +122,7 @@ def run_agent(question):
             tool_input = tool_input.strip('"')
             
             # Run the tool
+
             if tool_name in tools:
                 tool = tools[tool_name]
 
@@ -131,7 +132,9 @@ def run_agent(question):
                 observation = "Tool not found"
 
             print("Observation:", observation)
+
             # add LLM response to memory
+
             messages.append({
                             "role" : "assistant",
                             "content" : answer
@@ -139,6 +142,7 @@ def run_agent(question):
             })
 
             # give tools result back to LLM
+
             messages.append({
                 "role" : "user",
                 "content" :
@@ -152,7 +156,7 @@ def run_agent(question):
             )
 
 prompt = """
-I have 5000 rupees. what is the price of an iphone 17?
+I have 5000 rupees. what is the price of an iphone 15?
 and how much money will i have left ? 
 """
 run_agent(prompt)
