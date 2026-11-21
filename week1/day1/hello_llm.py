@@ -11,19 +11,29 @@ if not my_api_key:
 
 client = Groq(api_key = my_api_key)
 model="openai/gpt-oss-20b"
-role="user"
-content="Do you know pratyush narain"
+
+prompt="what is the capital of France?"
 
 message = {
-    "role" : role ,
-    "content" : content
+    "role" : "user",
+    "content" : prompt
 } 
 
 messages = [message]
 
-response = client.chat.completions.create(model = model , messages = messages)
-print(response)
+# response = client.chat.completions.create(model = model , messages = messages)
+# print(response)
 
-print("############################")
-answer = response.choices[0].message.content
-print(answer)
+# # print("############################")
+
+# answer = response.choices[0].message.content
+# print(answer)
+
+
+stream = client.chat.completions.create(model = model , messages = messages, stream=True)
+
+for chunk in stream:
+    content = chunk.choices[0].delta.content
+
+    if content:
+        print(content, end="", flush=True)
