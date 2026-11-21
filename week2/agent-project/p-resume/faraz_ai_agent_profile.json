@@ -1,0 +1,320 @@
+{
+  "profile_metadata": {
+    "document_title": "Faraz Ali - AI Agent Knowledge Profile",
+    "version": "1.0",
+    "last_updated": "2026-11-21",
+    "purpose": "Provide an HR-facing AI agent with factual information about the candidate. This file is a structured knowledge source, not a replacement for verifying claims.",
+    "usage_instructions_for_agent": [
+      "Answer HR questions using only information explicitly present in this profile.",
+      "Do not invent or assume missing details such as email address, phone number, grades, dates, employment history, or project metrics.",
+      "If a requested detail is missing, say that it has not been provided.",
+      "Clearly distinguish completed projects and experience from projects that are in progress or at the planning stage.",
+      "Describe skills using the proficiency or learning status supplied here; do not present learning topics as professional expertise.",
+      "For any item marked needs_confirmation, tell the user or HR that it requires confirmation before treating it as verified."
+    ]
+  },
+  "personal_information": {
+    "full_name": "Faraz Ali",
+    "preferred_name": "Faraz",
+    "email": null,
+    "phone": null,
+    "current_city": null,
+    "country": "India",
+    "professional_summary": "BCA graduate and MCA student focused on Python backend development, with hands-on project work using Django, PostgreSQL, REST APIs, and growing interest in Generative AI and LLM application development."
+  },
+  "education": [
+    {
+      "qualification": "Bachelor of Computer Applications (BCA)",
+      "status": "Completed",
+      "institution": "G. H. Raisoni College of Engineering and Business Management",
+      "location": "Jalgaon, Maharashtra, India",
+      "completion_date": null
+    },
+    {
+      "qualification": "Master of Computer Applications (MCA)",
+      "status": "Pursuing",
+      "current_semester_at_last_update": "First semester",
+      "institution": "Kurukshetra University",
+      "location": "Haryana, India",
+      "start_date": null
+    }
+  ],
+  "professional_links": {
+    "portfolio": "https://my-portfolio-2-0-iteiuz0oe-solo-ebd0.vercel.app/",
+    "github_profile": "https://github.com/farazalisayyed2728",
+    "linkedin_profile": "https://www.linkedin.com/in/faraz-ali-2728t",
+    "instagram_profile": "https://www.instagram.com/codewithfax"
+  },
+  "career_interests": [
+    "Python Backend Development",
+    "Django and REST API Development",
+    "Backend engineering",
+    "Generative AI and LLM application development"
+  ],
+  "skills": {
+    "programming_languages": [
+      {
+        "name": "Python",
+        "level": "Intermediate; actively used for backend development and DSA practice"
+      },
+      {
+        "name": "C#",
+        "level": "Basic/project exposure"
+      }
+    ],
+    "backend_and_api": [
+      {
+        "name": "Django",
+        "level": "Basic to developing; used in multiple projects"
+      },
+      {
+        "name": "Django REST Framework",
+        "level": "Learning/project exposure"
+      },
+      {
+        "name": "FastAPI",
+        "level": "Learning"
+      },
+      {
+        "name": "REST APIs",
+        "level": "Learning and project implementation"
+      }
+    ],
+    "databases": [
+      {
+        "name": "PostgreSQL",
+        "level": "Working knowledge/project use"
+      },
+      {
+        "name": "MySQL",
+        "level": "Basic"
+      },
+      {
+        "name": "SQL",
+        "level": "Basic"
+      },
+      {
+        "name": "Neon",
+        "level": "Used as a hosted PostgreSQL database in projects"
+      }
+    ],
+    "frontend": [
+      {
+        "name": "HTML",
+        "level": "Basic"
+      },
+      {
+        "name": "CSS",
+        "level": "Basic"
+      },
+      {
+        "name": "JavaScript",
+        "level": "Beginner; currently a weaker area"
+      }
+    ],
+    "tools_and_platforms": [
+      {
+        "name": "Git and GitHub",
+        "level": "Used for version control and project hosting"
+      },
+      {
+        "name": "Docker",
+        "level": "Learning/project exposure"
+      },
+      {
+        "name": "Vercel",
+        "level": "Used for deploying Django projects"
+      },
+      {
+        "name": "Redis",
+        "level": "Learning/project implementation"
+      },
+      {
+        "name": "Celery",
+        "level": "Project/planning exposure"
+      }
+    ],
+    "generative_ai_and_llms": [
+      {
+        "name": "Prompt Engineering",
+        "level": "Learning and practical experimentation"
+      },
+      {
+        "name": "Prompt Chaining",
+        "level": "Implemented in a learning project"
+      },
+      {
+        "name": "Groq API",
+        "level": "Learning and practical use"
+      },
+      {
+        "name": "Pydantic",
+        "level": "Learning and practical use"
+      },
+      {
+        "name": "LLM Streaming",
+        "level": "Learning and practical experimentation"
+      }
+    ],
+    "computer_science": [
+      {
+        "name": "Data Structures and Algorithms",
+        "level": "Practicing with Python; topics include arrays, trees, graphs, greedy algorithms, and dynamic programming"
+      }
+    ]
+  },
+  "experience": [
+    {
+      "type": "Internship",
+      "organization": "CodSoft",
+      "role": "Python Developer Intern",
+      "mode": "Virtual",
+      "start_date": "2025-12-20",
+      "end_date": "2026-02-20",
+      "status": "Completed",
+      "description": "Completed a virtual Python Developer internship.",
+      "responsibilities_and_deliverables": [],
+      "verification_note": "Detailed tasks, project deliverables, and any certificate details have not been supplied in this profile."
+    }
+  ],
+  "projects": [
+    {
+      "name": "Online Voting System",
+      "status": "Project developed; deployment and current live status should be verified before describing it as currently operational",
+      "type": "Academic/final-year project",
+      "description": "A web-based online voting system built as a college project.",
+      "technologies": [
+        "Python",
+        "Django",
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "PostgreSQL"
+      ],
+      "repository": "https://github.com/farazalisayyed2728/Online-Voting-System-Project-",
+      "deployment_url": null,
+      "details": [
+        "Django application includes election, candidate, and vote-related data models.",
+        "Neon PostgreSQL and Vercel were used during deployment work."
+      ]
+    },
+    {
+      "name": "Scalable URL Shortener",
+      "status": "Project work reported as completed; verify current repository state before making detailed claims",
+      "description": "A URL shortener project intended to demonstrate backend engineering concepts, analytics, and scalability.",
+      "technologies": [
+        "Python",
+        "Django",
+        "Django REST Framework",
+        "PostgreSQL",
+        "Redis",
+        "Docker"
+      ],
+      "repository": "https://github.com/farazalisayyed2728/scalable-URL-shortener-analytics",
+      "deployment_url": null,
+      "details": [
+        "Project work included URL shortening and analytics.",
+        "Additional engineering topics explored included caching, rate limiting, pagination, security, API documentation, and load testing."
+      ]
+    },
+    {
+      "name": "ShardVault",
+      "status": "In development",
+      "description": "A distributed file-storage project built with a Django backend.",
+      "technologies": [
+        "Python",
+        "Django",
+        "Django REST Framework",
+        "PostgreSQL",
+        "Celery",
+        "Docker"
+      ],
+      "repository": null,
+      "deployment_url": null,
+      "details": [
+        "Project structure includes accounts, files, and audit applications.",
+        "Authentication, file handling, background processing, and deployment configuration have been part of the development work."
+      ]
+    },
+    {
+      "name": "SpeakUp AI",
+      "status": "Planning / early development",
+      "description": "An AI-powered communication coach intended to help users improve communication through feedback on answers, voice, facial expressions, eye contact, and confidence.",
+      "technologies": [
+        "Python",
+        "Django",
+        "PostgreSQL",
+        "Celery",
+        "Redis",
+        "Docker",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "LLM APIs"
+      ],
+      "repository": null,
+      "deployment_url": null,
+      "details": [
+        "Planned features include AI feedback, suggested corrections, progress tracking, streaks, and usage limits.",
+        "Do not describe planned features as already implemented."
+      ]
+    },
+    {
+      "name": "Study Tracker",
+      "status": "Project developed; current production status should be verified",
+      "description": "A Django-based application for tracking study activity and routines.",
+      "technologies": [
+        "Python",
+        "Django",
+        "PostgreSQL",
+        "SQLite",
+        "Vercel",
+        "Neon"
+      ],
+      "repository": "https://github.com/farazalisayyed2728/Study_tracker_app",
+      "deployment_url": "https://study-tracker-app-mals.vercel.app",
+      "details": [
+        "Local development used SQLite and production deployment work used Neon PostgreSQL."
+      ]
+    },
+    {
+      "name": "FocusFlow",
+      "status": "Development / learning project",
+      "description": "A personal productivity and habit-tracking application.",
+      "technologies": [
+        "Python",
+        "Django",
+        "HTMX",
+        "Alpine.js"
+      ],
+      "repository": null,
+      "deployment_url": null,
+      "details": [
+        "Project work includes routines, habits, and productivity tracking."
+      ]
+    }
+  ],
+  "achievements": [
+    {
+      "title": "Top 5% of BCA batch",
+      "status": "Needs confirmation",
+      "note": "Previously mentioned in a resume-related discussion, but the exact wording and supporting academic record have not been verified in this profile."
+    },
+    {
+      "title": "Coding Clash - Runner-up",
+      "status": "Needs confirmation",
+      "note": "Previously mentioned in a resume-related discussion; event date and organizer have not been provided."
+    }
+  ],
+  "additional_information_to_collect": [
+    "Preferred professional email address",
+    "Phone number, if the user wants HR to access it",
+    "Current city or preferred work location",
+    "BCA graduation year",
+    "MCA start date and expected completion year",
+    "Detailed CodSoft internship tasks and certificate information",
+    "Verified project deployment links and repository links",
+    "Exact achievement wording and supporting details",
+    "Current resume content, including any additional skills, certifications, or projects"
+  ]
+}
