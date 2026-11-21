@@ -23,4 +23,5 @@ members = [
     "day7",
     "day8",
     "day9",
+    "agent-project",
 ]
