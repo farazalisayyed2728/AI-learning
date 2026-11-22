@@ -17,7 +17,7 @@ model="openai/gpt-oss-20b"
 
 job_description = """Job Title: Junior Python Backend Developer
 Company: TechNova Solutions
-Experience: 0–1 Years (Fresher)
+Experience: 0-1 Years (Fresher)
 Location: Pune, Maharashtra
 Job Type: Full-Time
 Job Description

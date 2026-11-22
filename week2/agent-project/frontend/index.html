@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ask Faraz's AI career assistant questions about his resume."
+    />
+    <title>Faraz AI - Career assistant</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
+      <aside class="sidebar" id="sidebar" aria-label="Chat sidebar">
+        <div class="sidebar-top">
+          <a class="brand" href="#" aria-label="Faraz AI home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M12 2.8 14.6 9.4 21.2 12l-6.6 2.6L12 21.2l-2.6-6.6L2.8 12l6.6-2.6L12 2.8Z" fill="currentColor" />
+                <circle cx="19.1" cy="4.9" r="1.4" fill="currentColor" />
+              </svg>
+            </span>
+            <span>Faraz <span class="brand-light">AI</span></span>
+          </a>
+          <button class="icon-button sidebar-close" id="sidebar-close" type="button" aria-label="Close sidebar">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
+          </button>
+        </div>
+
+        <button class="new-chat-button" id="new-chat" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+          <span>New chat</span>
+          <kbd>⌘ K</kbd>
+        </button>
+
+        <div class="history-heading">Recent</div>
+        <nav class="chat-history" id="chat-history" aria-label="Recent chats"></nav>
+
+        <div class="sidebar-bottom">
+          <div class="resume-card">
+            <span class="resume-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M7 3.75h7l4 4v12.5H7a2 2 0 0 1-2-2v-12.5a2 2 0 0 1 2-2Z" /><path d="M14 3.75v4h4M8.5 12h7M8.5 15.5h7" /></svg>
+            </span>
+            <span class="resume-copy">
+              <strong>Resume connected</strong>
+              <span>Faraz Ali · PDF</span>
+            </span>
+            <span class="status-dot" title="Connected"></span>
+          </div>
+          <div class="profile-row">
+            <span class="profile-avatar">FA</span>
+            <span class="profile-copy">
+              <strong>Faraz Ali</strong>
+              <span>Career assistant</span>
+            </span>
+            <span class="profile-menu" aria-hidden="true">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="icon-button menu-button" id="menu-button" type="button" aria-label="Open sidebar">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+            <span class="topbar-label">Career assistant</span>
+            <span class="topbar-separator">/</span>
+            <span class="topbar-current" id="topbar-current">New conversation</span>
+          </div>
+          <div class="topbar-right">
+            <span class="model-badge"><span class="model-dot"></span> AI assistant</span>
+            <button class="share-button" id="share-button" type="button" title="Copy conversation">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6" /></svg>
+              <span>Copy chat</span>
+            </button>
+          </div>
+        </header>
+
+        <section class="conversation" aria-label="Conversation">
+          <div class="messages" id="messages" aria-live="polite"></div>
+        </section>
+
+        <footer class="composer-area">
+          <form class="composer" id="chat-form">
+            <label class="sr-only" for="question">Message Faraz AI</label>
+            <textarea
+              id="question"
+              name="question"
+              rows="1"
+              maxlength="2000"
+              placeholder="Ask anything about Faraz..."
+              autocomplete="off"
+              required
+            ></textarea>
+            <div class="composer-toolbar">
+              <div class="composer-hint">
+                <span class="sparkle-small" aria-hidden="true">✦</span>
+                Answers are based on the resume
+              </div>
+              <div class="composer-actions">
+                <span class="char-count" id="char-count">0 / 2000</span>
+                <button class="send-button" id="send-button" type="submit" aria-label="Send message" disabled>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m0 0L6 11m6-6 6 6" /></svg>
+                </button>
+              </div>
+            </div>
+          </form>
+          <p class="disclaimer">AI can make mistakes. Verify important information.</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
