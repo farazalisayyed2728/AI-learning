@@ -1,0 +1,6 @@
+"Employees receive 24 days of paid leave per year ." ,
+"employees work from the office on thusday , wedneday , thursday.",
+"monday friday are optional work from home days", 
+"employees recieve Rs 3000 per month for gym reimbursement " ,
+"employees canm claim Rs 2000 per month for home internet",
+"Employee have a 90 day notice period."

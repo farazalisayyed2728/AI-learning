@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from groq import Groq
 
 import numpy as np
-from sentence_transformers import SentenceTransformer\
+from sentence_transformers import SentenceTransformer
 
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
