@@ -64,11 +64,9 @@ print(f"loaded {len(documents)} documents")
 
 
 print("Loading embedding model...")
-
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 print("Embedding model ready")
-
 embeddings = model.encode(documents)
 
 print(f"Generated {len(embeddings)} embeddings")
